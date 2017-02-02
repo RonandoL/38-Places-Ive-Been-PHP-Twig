@@ -4,12 +4,13 @@
     <meta charset='utf-8'>
     <title>Places You've been</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/css/styles.css'>  <!-- Why does this css mapping work???? -->
   </head>
 
   <body>
     <div class='container'>
       <div class='row'>
-        <div class='col-md-4'>
+        <div class='col-md-6'>
 
           <h2>Places You've been</h2>
           <form action='/places' method='post'>
@@ -20,6 +21,10 @@
             <div class='form-group'>
               <label for='country'>Enter the country of the city</label>
               <input id='country' name='country' type='text' class='form-control'>
+            </div>
+            <div class='form-group'>
+              <label for='image'>Enter URL to image of the city</label>
+              <input id='image' name='image' type='text' class='form-control' placeholder='dont worry about size, I gotchyou covered'>
             </div>
             <button type='submit' class='btn btn-sm btn-primary'>Submit</button>
           </form>
@@ -33,12 +38,12 @@
               <h4>Here are the places you've been</h4>
               <ul>
               {% for place in places %}
-                  <li>{{ place.getCity }}, {{ place.getCountry }}</li>
+                  <li><div class='imageParent'><img src='{{ place.getImage }}'></div> {{ place.getCity }}, {{ place.getCountry }}</li><br>
               {% endfor %}
               </ul>
           {% endif %}
 
-        </div>  <!-- .col-md-4 -->
+        </div>  <!-- .col-md-6 -->
       </div>  <!-- .row -->
     </div>  <!-- .container -->
 

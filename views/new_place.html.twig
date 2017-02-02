@@ -4,23 +4,24 @@
     <meta charset='utf-8'>
     <title>Places You've been</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/css/styles.css'>  <!-- Why does this css mapping work???? -->
   </head>
 
   <body>
     <div class='container'>
       <div class='row'>
-        <div class='col-md-4'>
+        <div class='col-md-6'>
 
           <h4>Place you just added</h4>
           <ul>
-              <li>{{ newcity.getCity }}, {{ newcity.getCountry }}</li>
+              <li><div class='imageParent'><img src='{{ newcity.getImage }}'></div> {{ newcity.getCity }}, {{ newcity.getCountry }}</li>
           </ul>
 
           <form action='/'>
             <button type='submit' class='btn btn-sm btn-info'>Back to Home Page</button>
           </form>
 
-        </div>  <!-- .col-md-4 -->
+        </div>  <!-- .col-md-6 -->
       </div>  <!-- .row -->
     </div>  <!-- .container -->
 

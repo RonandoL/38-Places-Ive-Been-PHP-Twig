@@ -3,12 +3,33 @@
     {
         private $city;
         private $country;
+        private $image;
 
-        function __construct($city_visited, $country_visted)
+        function __construct($city_visited, $country_visted, $city_image)
         {
             $this->city = $city_visited;
             $this->country = $country_visted;
+            $this->image = $city_image;
         }
+
+          // Save Place
+          function save()
+          {
+              array_push($_SESSION['array_of_places'], $this);
+          }
+
+          // Get All Places
+          static function getAll()
+          {
+              return $_SESSION['array_of_places'];
+          }
+
+          // Delete All Places
+          static function deleteAll()
+          {
+              $_SESSION['array_of_places'] = array();
+          }
+
 
         // CITY: Setter & Getter
         function setCity($new_city)
@@ -30,24 +51,14 @@
             return $this->country;
         }
 
-
-
-      // Save Place
-        function save()
+        // IMAGE: Setter & Getter
+        function setImage($new_image)
         {
-            array_push($_SESSION['array_of_places'], $this);
+            $this->image = $new_image;
         }
-
-      // Get All Places
-        static function getAll()
+        function getImage()
         {
-            return $_SESSION['array_of_places'];
-        }
-
-      // Delete All Places
-        static function deleteAll()
-        {
-            $_SESSION['array_of_places'] = array();
+            return $this->image;
         }
 
     }

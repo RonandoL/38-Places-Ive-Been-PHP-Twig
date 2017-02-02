@@ -1,19 +1,19 @@
 <?php
-    date_default_timezone_set('America/Los_Angeles');
-    require_once __DIR__."/../vendor/autoload.php";
-    require_once __DIR__."/../src/places.php";
+      date_default_timezone_set('America/Los_Angeles');
+      require_once __DIR__."/../vendor/autoload.php";
+      require_once __DIR__."/../src/places.php";
 
-    session_start();      // For global variable, saving Array of all places in browser cache
-    if (empty($_SESSION['array_of_places'])) {
-        $_SESSION['array_of_places'] = array();
-    }
+      session_start();      // For global variable, saving Array of all places in browser cache
+      if (empty($_SESSION['array_of_places'])) {
+          $_SESSION['array_of_places'] = array();
+      }
 
-    $app = new Silex\Application();
+      $app = new Silex\Application();
 
-    $app->register(new Silex\Provider\TwigServiceProvider(), array(
-        'twig.path' => __DIR__.'/../views'
-    ));                   // Tells the project that the Twig files exist
-  // End Red Tape
+      $app->register(new Silex\Provider\TwigServiceProvider(), array(
+          'twig.path' => __DIR__.'/../views'
+      ));                   // Tells the project that the Twig files exist
+      // End Red Tape
 
   // 1. Route to home page
     $app->get("/", function() use ($app) {
@@ -22,8 +22,8 @@
 
   // 2. POST Route to Confirmation page with newly added Place
     $app->post("/places", function() use ($app) {
-        $place = new Place($_POST['city'], $_POST['country']);     // Instantiation of new Place object
-        $save = $place->save();                  // Saving the new place object
+        $place = new Place($_POST['city'], $_POST['country'], $_POST['image']);
+        $save = $place->save();
 
         return $app['twig']->render('new_place.html.twig', array('newcity' => $place));
     });
