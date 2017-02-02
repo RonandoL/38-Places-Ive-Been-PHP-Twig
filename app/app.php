@@ -20,12 +20,14 @@
         return $app['twig']->render('places.html.twig', array('places' => Place::getAll()));
     });
 
-    $app->post("/places", function() {   // 5. New Route to confirmation page
-        // xxxxxxxxxx
-        // xxxxx
+  // 2. Route to Confirmation page with newly added Place
+    $app->post("/places", function() use ($app) {
+        $place = new Place($_POST['place']);     // Instantiation of new Place object
+        $save = $place->save();                  // Saving the new place object
 
+        return $app['twig']->render('new_place.html.twig', array('newplace' => $place));
+      });
 
-    });
 
     $app->post('/', function() {
         // xxxxxxxxxx
