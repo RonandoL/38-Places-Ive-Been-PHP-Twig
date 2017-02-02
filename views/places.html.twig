@@ -10,7 +10,7 @@
     <div class='container'>
       <div class='row'>
         <div class='col-md-4'>
-        
+
           <h2>Places You've been</h2>
           <form action='/places' method='post'>
             <div class='form-group'>
@@ -20,6 +20,10 @@
             <button type='submit' class='btn btn-sm btn-primary'>Submit</button>
           </form>
 
+          <br>
+          <form action='/delete' method='post'>
+              <button type='submit' class='btn btn-sm'>Delete all places</button>
+          </form>
           {% if places is not empty %}
               <h4>Here are the places you've been</h4>
               <ul>
