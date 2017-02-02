@@ -4,8 +4,8 @@
     require_once __DIR__."/../src/places.php";
 
     session_start();      // For global variable, saving Array of all places in browser cache
-    if (empty($_SESSION['array_of_places'])) {
-        $_SESSION['array_of_places'] = array();
+    if (empty($_SESSION['array_of_cities'])) {
+        $_SESSION['array_of_cities'] = array();
     }
 
     $app = new Silex\Application();
@@ -17,15 +17,15 @@
 
   // 1. Route to home page
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('places.html.twig', array('places' => Place::getAll()));
+        return $app['twig']->render('places.html.twig', array('cities' => Place::getAll()));
     });
 
   // 2. POST Route to Confirmation page with newly added Place
     $app->post("/places", function() use ($app) {
-        $place = new Place($_POST['place']);     // Instantiation of new Place object
+        $place = new Place($_POST['city']);     // Instantiation of new Place object
         $save = $place->save();                  // Saving the new place object
 
-        return $app['twig']->render('new_place.html.twig', array('newplace' => $place));
+        return $app['twig']->render('new_place.html.twig', array('newcity' => $place));
     });
 
   // 3. POST Route to confirm Deletion of all places, before going to home page

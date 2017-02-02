@@ -1,39 +1,44 @@
 <?php
     class Place
     {
-        private $place;
+        private $city;
+        // private $country;
 
-        function __construct($place_been)
+        function __construct($city_visited)
         {
-            $this->place = $place_been;
+            $this->city = $city_visited;
         }
 
-        // Setter & Getter
-        function setPlace($new_place)
+        // CITY: Setter & Getter
+        function setCity($new_city)
         {
-            $this->place = $new_place;
+            $this->city = $new_city;
         }
-        function getPlace()
+        function getCity()
         {
-            return $this->place;
+            return $this->city;
         }
+
+        // COUNTRY: Setter & Getter
+
+
 
       // Save Place
         function save()
         {
-            array_push($_SESSION['array_of_places'], $this);
+            array_push($_SESSION['array_of_cities'], $this);
         }
 
       // Get All Places
         static function getAll()
         {
-            return $_SESSION['array_of_places'];
+            return $_SESSION['array_of_cities'];
         }
 
       // Delete All Places
         static function deleteAll()
         {
-            $_SESSION['array_of_places'] = array();
+            $_SESSION['array_of_cities'] = array();
         }
 
     }
