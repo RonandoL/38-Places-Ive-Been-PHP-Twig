@@ -18,19 +18,19 @@
             return $this->place;
         }
 
-        // Save Place
+      // Save Place
         function save()
         {
-            array_push(['array_of_places'], $this);
+            array_push($_SESSION['array_of_places'], $this);
         }
 
-        // Get All Places
+      // Get All Places
         static function getAll()
         {
             return $_SESSION['array_of_places'];
         }
 
-        // Delete All Places
+      // Delete All Places
         static function deleteAll()
         {
             $_SESSION['array_of_places'] = array();
