@@ -17,6 +17,10 @@
               <label for='city'>Enter a city you've been to</label>
               <input id='city' name='city' type='text' class='form-control'>
             </div>
+            <div class='form-group'>
+              <label for='country'>Enter the country of the city</label>
+              <input id='country' name='country' type='text' class='form-control'>
+            </div>
             <button type='submit' class='btn btn-sm btn-primary'>Submit</button>
           </form>
 
@@ -25,11 +29,11 @@
               <button type='submit' class='btn btn-sm'>Delete all places</button>
           </form>
           <hr>
-          {% if cities is not empty %}
+          {% if places is not empty %}
               <h4>Here are the places you've been</h4>
               <ul>
-              {% for city in cities %}
-                  <li>{{ city.getCity }}</li>
+              {% for place in places %}
+                  <li>{{ place.getCity }}, {{ place.getCountry }}</li>
               {% endfor %}
               </ul>
           {% endif %}
